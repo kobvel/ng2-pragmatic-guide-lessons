@@ -1,0 +1,11 @@
+.glyphicon:hover {
+    cursor: pointer;
+}
+
+.glyphicon {
+    color: #ccc;
+}
+
+.filled {
+    color: darkred;
+}

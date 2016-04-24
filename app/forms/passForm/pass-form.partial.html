@@ -1,0 +1,71 @@
+<h3>Change password Form</h3>
+<form [ngFormModel]="form" (ngSubmit)="changePass(form)">
+    <div class="form-group">
+        <label for="current">Current Password</label>
+        <input 
+            ngControl="current" 
+            id="current" 
+            type="text" 
+            class="form-control"
+            #current="ngForm">
+        <div *ngIf="current.touched && current.errors">
+            <div 
+                *ngIf="current.errors.required" 
+                class="alert alert-danger">
+                Old Password required
+            </div>
+            <div 
+                *ngIf="current.errors.validOldPassword" 
+                class="alert alert-danger">
+                You set not correct password
+            </div>
+        </div>
+      
+    </div>
+    <div class="form-group">
+        <label 
+            for="password">
+            New Password
+        </label>
+        <input 
+            ngControl="newpass" 
+            id="newpass" 
+            type="text" 
+            class="form-control"
+            #newpass="ngForm"
+            >
+        <div *ngIf="!newpass.valid && newpass.dirty">
+            <div 
+                *ngIf="newpass.errors.required"
+                class="alert alert-danger">
+                New Password is requried
+            </div>
+            <div 
+                *ngIf="newpass.errors.minlength"
+                class="alert alert-danger">
+                New Password should be at least 5 characters
+            </div>
+        </div>
+       
+    </div>
+    <div class="form-group">
+        <label 
+            for="confirm">
+            Confirm Password
+        </label>
+        <input 
+            ngControl="confirm" 
+            id="confirm" 
+            type="text" 
+            class="form-control"
+            #confirm="ngForm">
+        <div 
+            *ngIf="confirm.touched && form.errors && form.errors.shouldMatchWith"
+            class="alert alert-danger">
+           Passwords should match
+        </div>
+        
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Sign Up</button>
+    
+</form>

@@ -1,0 +1,13 @@
+<div class="vote-container">
+    <span 
+        class="glyphicon glyphicon-menu-up"
+        [class.voted]="voted==='up'"
+        (click)="voteClick('up')">
+    </span>
+    <div>{{totalVotes}}</div>
+    <span 
+        class="glyphicon glyphicon-menu-down"
+        [class.voted]="voted==='down'"
+        (click)="voteClick('down')">
+    </span>
+</div>

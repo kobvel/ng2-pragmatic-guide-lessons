@@ -1,0 +1,59 @@
+<h3>Subscribe Form</h3>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.form)">
+    <div class="form-group">
+        <label for="firstName">Name</label>
+        <input 
+            ngControl="name" 
+            #name="ngForm" 
+            id="name" 
+            type="text" 
+            class="form-control" 
+            required
+            minlength="3">
+        <div *ngIf="name.touched && name.errors">
+            <div 
+                class="alert alert-danger" 
+                *ngIf="name.errors.required">
+                Name is required.
+            </div>
+            <div
+                class="alert alert-danger"
+                *ngIf="name.errors.minlength">
+                Name should be minimum {{ name.errors.minlength.requiredLength }} characters.
+            </div>
+        </div>
+        
+        <label for="email">Email</label>
+        <input 
+            ngControl="email"
+            #email="ngForm" 
+            type="email"
+            class="form-control"
+            minlength="3"
+            required>
+        <div *ngIf="email.touched && email.errors">
+            <div 
+                class="alert alert-danger" 
+                *ngIf="email.errors.required">
+                Email is required.
+            </div>
+            <div
+                class="alert alert-danger"
+                *ngIf="email.errors.minlength">
+                Email should be minimum {{ email.errors.minlength.requiredLength }} characters.
+            </div>
+        </div>
+        <label for="freqEmails">Frequency of Emails</label>
+        <select
+            ngControl="frequency" 
+            #frequency="ngForm"  
+            class="form-control" 
+            name="freqEmails" 
+            id="freqEmails">
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Yearly">Yearly</option>            
+        </select>
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid">Subscribe</button>
+</form>

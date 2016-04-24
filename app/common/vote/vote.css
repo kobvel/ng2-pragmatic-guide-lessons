@@ -1,0 +1,11 @@
+.vote-container {
+    padding-top: 20px;
+    padding-left: 15px;
+}
+
+.vote-container > div {
+    margin-left: 3px;
+}
+.voted {
+    color: orange;
+}
