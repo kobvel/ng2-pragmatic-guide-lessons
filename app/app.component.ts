@@ -13,6 +13,7 @@ import {ZippyComponent} from './common/zippy/zippy.component';
 import {ContactFormComponent} from './forms/contactForm/contact-form.component';
 import {SignUpFormComponent} from './forms/signupForm/signup-form.component';
 import {PassFormComponent} from './forms/passForm/pass-form.component';
+import {ObsrvFormComponent} from './forms/obsrvForm/obsrv-form.component';
 
 
 @Component({
@@ -23,7 +24,8 @@ import {PassFormComponent} from './forms/passForm/pass-form.component';
         ZippyComponent,
         ContactFormComponent,
         SignUpFormComponent,
-        PassFormComponent
+        PassFormComponent,
+        ObsrvFormComponent
     ],
     providers: [TweetDataService]
 })
@@ -31,6 +33,6 @@ export class AppComponent {
     private tweets: ITweet[];
 
     constructor(private tweetDataService: TweetDataService) {
-        this.tweets = this.tweetDataService.getTweets()
+        this.tweets = this.tweetDataService.getTweets();
     }
 }
