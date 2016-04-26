@@ -21,8 +21,6 @@ import {PassFormComponent} from './forms/passForm/pass-form.component';
 import {ObsrvFormComponent} from './forms/obsrvForm/obsrv-form.component';
 
 
-import {PostService} from './post.service';
-
 import {GitComponent} from './gitData/git.component';
 
 @Component({
@@ -37,23 +35,17 @@ import {GitComponent} from './gitData/git.component';
         ObsrvFormComponent,
         GitComponent
     ],
-    providers: [TweetDataService, PostService, HTTP_PROVIDERS]
+    providers: [TweetDataService, HTTP_PROVIDERS]
 })
 export class AppComponent implements OnInit {
     isLoading: boolean = true;
     private tweets: ITweet[];
 
     constructor(
-        private tweetDataService: TweetDataService,
-        private _postService: PostService) {
+        private tweetDataService: TweetDataService, ) {
         this.tweets = this.tweetDataService.getTweets();
-        this._postService.createPost({ userId: 1, title: 'str', body: 'hey' });
     }
     ngOnInit() {
-        this._postService.getPosts()
-            .subscribe(posts => {
-                this.isLoading = false;
-                console.log(posts);
-            });
+        console.log('on init');
     }
 }
