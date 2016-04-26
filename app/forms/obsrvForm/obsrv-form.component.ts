@@ -52,29 +52,38 @@ export class ObsrvFormComponent {
         //     })
         //     .subscribe(news => console.log(news));
 
-        let usersStream = Observable.of({ userId: 1, username: 'Mikki' }).delay(1000);
-        let tweetsStream = Observable.of([1, 2, 3]).delay(1500);
+        // let usersStream = Observable.of({ userId: 1, username: 'Mikki' }).delay(1000);
+        // let tweetsStream = Observable.of([1, 2, 3]).delay(1500);
 
-        Observable.forkJoin(usersStream, tweetsStream)
-            .map(joined => new Object({ user: joined[0], tweet: joined[1] }))
-            .subscribe(result => console.log(result));
+        // Observable.forkJoin(usersStream, tweetsStream)
+        //     .map(joined => new Object({ user: joined[0], tweet: joined[1] }))
+        //     .subscribe(result => console.log(result));
 
-        let counter = 0;
-        let ajaxCall = Observable.of('url')
-            .flatMap(() => {
-                if (++counter < 2) {
-                    return Observable.throw(new Error('Requeest failed'));
-                }
-                return Observable.of([1, 2, 3]);
-            });
-        ajaxCall
-            .retry(3)
-            .subscribe(x => console.log(x), error => console.error(error));
+        // let counter = 0;
+        // let ajaxCall = Observable.of('url')
+        //     .flatMap(() => {
+        //         if (++counter < 2) {
+        //             return Observable.throw(new Error('Requeest failed'));
+        //         }
+        //         return Observable.of([1, 2, 3]);
+        //     });
+        // ajaxCall
+        //     .retry(3)
+        //     .subscribe(x => console.log(x), error => console.error(error));
 
-        let remoteDataStream = Observable.throw(new Error('Something failed.'));
-        remoteDataStream.catch((err) => {
-            let localDataStream = Observable.of([1, 2, 3]);
-            return localDataStream;
-        }).subscribe(x => console.log(x));
+        // let remoteDataStream = Observable.throw(new Error('Something failed.'));
+        // remoteDataStream.catch((err) => {
+        //     let localDataStream = Observable.of([1, 2, 3]);
+        //     return localDataStream;
+        // });
+
+        // let remoteDataStream = Observable.of([1, 2, 3]).delay(5000);
+        // remoteDataStream.timeout(1000)
+        //     .subscribe(
+        //     x => console.log(x),
+        //     error => console.error(error)
+        //     );
+
+
     }
 }
