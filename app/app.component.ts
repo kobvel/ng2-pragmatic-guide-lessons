@@ -1,4 +1,9 @@
 import {Component} from 'angular2/core';
+import {HTTP_PROVIDERS} from 'angular2/http';
+
+import {OnInit} from 'angular2/core';
+import {Post} from './post';
+
 import {CoursesComponent} from './courses/courses.component';
 import {AuthorsComponent} from './authors/authors.component';
 import {StarComponent} from './common/star/star.component';
@@ -16,6 +21,10 @@ import {PassFormComponent} from './forms/passForm/pass-form.component';
 import {ObsrvFormComponent} from './forms/obsrvForm/obsrv-form.component';
 
 
+import {PostService} from './post.service';
+
+import {GitComponent} from './gitData/git.component';
+
 @Component({
     selector: 'my-app',
     templateUrl: 'app/app.partial.html',
@@ -25,14 +34,26 @@ import {ObsrvFormComponent} from './forms/obsrvForm/obsrv-form.component';
         ContactFormComponent,
         SignUpFormComponent,
         PassFormComponent,
-        ObsrvFormComponent
+        ObsrvFormComponent,
+        GitComponent
     ],
-    providers: [TweetDataService]
+    providers: [TweetDataService, PostService, HTTP_PROVIDERS]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+    isLoading: boolean = true;
     private tweets: ITweet[];
 
-    constructor(private tweetDataService: TweetDataService) {
+    constructor(
+        private tweetDataService: TweetDataService,
+        private _postService: PostService) {
         this.tweets = this.tweetDataService.getTweets();
+        this._postService.createPost({ userId: 1, title: 'str', body: 'hey' });
+    }
+    ngOnInit() {
+        this._postService.getPosts()
+            .subscribe(posts => {
+                this.isLoading = false;
+                console.log(posts);
+            });
     }
 }
