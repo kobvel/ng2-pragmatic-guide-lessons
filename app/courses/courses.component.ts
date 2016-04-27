@@ -4,7 +4,7 @@ import {AutoGrowDirective} from '../directives/auto-grow.directive';
 
 @Component({
     selector: 'courses',
-    templateUrl: 'app/courses/courses.partial',
+    templateUrl: 'app/courses/courses.partial.html',
     providers: [CourseService],
     directives: [AutoGrowDirective]
 })

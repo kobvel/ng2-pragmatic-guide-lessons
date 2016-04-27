@@ -1,6 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {GitService} from './git.service';
 import {IGitFollower, IUserInfo} from './git.model';
+import {RouteParams} from 'angular2/router';
 
 @Component({
     selector: 'git-data',
@@ -14,7 +15,7 @@ export class GitComponent implements OnInit {
     user: IUserInfo;
     followers: IGitFollower[];
 
-    constructor(private gitService: GitService) {
+    constructor(private gitService: GitService, private routeParams: RouteParams) {
     }
     ngOnInit() {
         this.gitService._getGitData('kobvel')
