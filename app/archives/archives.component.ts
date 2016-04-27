@@ -5,7 +5,7 @@ import {ArchiveComponent} from './archive/archive.component';
 
 
 @RouteConfig([
-    { path: '/test', name: 'Archive', component: ArchiveComponent, useAsDefault: true }
+    { path: ':id', name: 'Archive', component: ArchiveComponent, useAsDefault: true }
 ])
 @Component({
     selector: 'git-data',
@@ -14,5 +14,7 @@ import {ArchiveComponent} from './archive/archive.component';
 export class ArchivesComponent {
     archives: string[] = ['12/12/2015', '15/12/2016', '15/03/2008'];
     constructor(private routeParams: RouteParams) {
+        console.log(this.routeParams.params);
+        
     }
 }

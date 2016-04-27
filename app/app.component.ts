@@ -25,7 +25,7 @@ import {GitComponent} from './gitData/git.component';
 @RouteConfig([
     { path: '/git', name: 'Git', component: GitComponent },
     { path: '/courses', name: 'Courses', component: CoursesComponent, useAsDefault: true },
-    { path: '/archives/...', name: 'Archives', component: ArchivesComponent },
+    { path: '/archives/...', name: 'Archives', component: ArchivesComponent, data: { id: 'foo' } },
     { path: '/*other', name: 'Other', redirectTo: ['Git'] }
 ])
 @Component({
