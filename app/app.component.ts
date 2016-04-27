@@ -25,7 +25,7 @@ import {GitComponent} from './gitData/git.component';
 @RouteConfig([
     { path: '/git', name: 'Git', component: GitComponent },
     { path: '/courses', name: 'Courses', component: CoursesComponent, useAsDefault: true },
-    { path: '/archives/...', name: 'Archives', component: ArchivesComponent, data: { id: 'foo' } },
+    { path: '/archives/...', name: 'Archives', component: ArchivesComponent },
     { path: '/*other', name: 'Other', redirectTo: ['Git'] }
 ])
 @Component({
@@ -38,17 +38,14 @@ import {GitComponent} from './gitData/git.component';
         ContactFormComponent,
         SignUpFormComponent,
         PassFormComponent,
-        ObsrvFormComponent
-    ],
+        ObsrvFormComponent],
     providers: [TweetDataService]
 })
 export class AppComponent implements OnInit {
     isLoading: boolean = true;
     private tweets: ITweet[];
 
-    constructor(
-        private tweetDataService: TweetDataService) {
-        this.tweets = this.tweetDataService.getTweets();
+    constructor() {
     }
     ngOnInit() {
         console.log('on init');

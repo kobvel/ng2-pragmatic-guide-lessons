@@ -9,7 +9,6 @@ import {RouteParams} from 'angular2/router';
 export class ArchiveComponent {
     date: string;
     constructor(private routeParams: RouteParams) {
-
         console.log(this.routeParams.params);
     }
 }
