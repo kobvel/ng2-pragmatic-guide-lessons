@@ -2,7 +2,6 @@ import {Component} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
 import {OnInit} from 'angular2/core';
-import {Post} from './post';
 
 import {CoursesComponent} from './courses/courses.component';
 import {AuthorsComponent} from './authors/authors.component';
